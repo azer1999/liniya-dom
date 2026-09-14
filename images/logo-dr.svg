@@ -1,0 +1,8 @@
+<svg width="184" height="40" viewBox="0 0 184 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 36V4H40V36H4Z" stroke="#111111" stroke-width="2.4"/>
+<path d="M12 28V12H20V28" stroke="#111111" stroke-width="2.4" stroke-linecap="square"/>
+<path d="M24 12H32V28H24" stroke="#111111" stroke-width="2.4" stroke-linecap="square"/>
+<path d="M20 20H24" stroke="#111111" stroke-width="2.4"/>
+<text x="56" y="20" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="1.4">ЛИНИЯ ДОМ</text>
+<text x="56" y="32" fill="#111111" fill-opacity=".58" font-family="Arial, Helvetica, sans-serif" font-size="7" letter-spacing="1.4">АРХИТЕКТУРНОЕ БЮРО</text>
+</svg>

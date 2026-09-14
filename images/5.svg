@@ -1,0 +1,11 @@
+<svg width="185" height="75" viewBox="0 0 185 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity=".46" stroke="#111" stroke-width="2">
+<path d="M40 14L64 28V55L40 68L16 55V28L40 14Z"/>
+<path d="M16 28L40 41L64 28"/>
+<path d="M40 41V68"/>
+</g>
+<g opacity=".58" fill="#111">
+<text x="82" y="33" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">МОДУЛЬ</text>
+<text x="82" y="50" font-family="Arial, Helvetica, sans-serif" font-size="7" letter-spacing="4">МЕБЕЛЬ</text>
+</g>
+</svg>
