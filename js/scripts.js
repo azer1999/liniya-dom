@@ -140,13 +140,44 @@
             document.body.insertBefore(mainNavbar, smoothWrapper);
         }
         if (mainNavbar) {
+            let lastScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+            let tickingNavbar = false;
+
             const updateNavbarState = () => {
-                const shouldPinStyle = window.scrollY > 20 || (window.location.hash && window.location.hash !== '#top');
-                mainNavbar.classList.toggle('is-scrolled', shouldPinStyle);
+                const currentScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+                const isAtTop = currentScrollY <= 10;
+                const isScrollingDown = currentScrollY > lastScrollY + 6;
+                const isScrollingUp = currentScrollY < lastScrollY - 6;
+                const navigationIsOpen = document.querySelector('.offcanvas.show, .navbar-collapse.show');
+
+                mainNavbar.classList.toggle('is-scrolled', currentScrollY > 20 || (window.location.hash && window.location.hash !== '#top'));
+
+                if (isAtTop || navigationIsOpen) {
+                    mainNavbar.classList.remove('is-hidden');
+                } else if (isScrollingDown) {
+                    mainNavbar.classList.add('is-hidden');
+                } else if (isScrollingUp) {
+                    mainNavbar.classList.remove('is-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+                tickingNavbar = false;
             };
+
+            const requestNavbarUpdate = () => {
+                if (!tickingNavbar) {
+                    window.requestAnimationFrame(updateNavbarState);
+                    tickingNavbar = true;
+                }
+            };
+
             updateNavbarState();
-            window.addEventListener('scroll', updateNavbarState, { passive: true });
-            window.addEventListener('hashchange', () => window.setTimeout(updateNavbarState, 0));
+            window.addEventListener('scroll', requestNavbarUpdate, { passive: true });
+            window.addEventListener('hashchange', () => {
+                mainNavbar.classList.remove('is-hidden');
+                window.setTimeout(updateNavbarState, 0);
+            });
+            mainNavbar.addEventListener('mouseenter', () => mainNavbar.classList.remove('is-hidden'));
         }
 
         const closeOpenNavigation = () => {
@@ -195,6 +226,7 @@
 
             if (mainNavbar) {
                 mainNavbar.classList.toggle('is-scrolled', hash !== '#top');
+                mainNavbar.classList.remove('is-hidden');
             }
 
             return true;

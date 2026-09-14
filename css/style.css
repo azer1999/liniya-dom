@@ -3303,10 +3303,17 @@ input:focus {
   width: 100%;
   padding: 30px 0;
   z-index: 999;
-  -webkit-transition: background-color 0.25s ease, padding 0.25s ease, -webkit-box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, padding 0.25s ease, -webkit-box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease, -webkit-box-shadow 0.25s ease;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  will-change: transform;
+  -webkit-transition: background-color 0.25s ease, padding 0.25s ease, -webkit-transform 0.35s ease, -webkit-box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, padding 0.25s ease, -webkit-transform 0.35s ease, -webkit-box-shadow 0.25s ease;
+  transition: transform 0.35s ease, background-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.35s ease, background-color 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease, -webkit-transform 0.35s ease, -webkit-box-shadow 0.25s ease;
+}
+.tc-navbar-st1.is-hidden {
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
 }
 .tc-navbar-st1.is-scrolled {
   padding: 15px 0;
@@ -3835,7 +3842,7 @@ header[id] {
 }
 .tc-project-detail .project-hero {
   position: relative;
-  padding: 100px 0 70px;
+  padding: 150px 0 70px;
 }
 .tc-project-detail .project-meta {
   border-top: 1px solid #9993;
@@ -3888,7 +3895,10 @@ header[id] {
 }
 @media screen and (max-width: 991px) {
   .tc-project-detail .project-hero {
-    padding-top: 70px;
+    padding-top: 140px;
+  }
+  .tc-project-detail .project-hero h1 {
+    font-size: 52px !important;
   }
   .tc-project-detail .main-img {
     height: 480px;
@@ -3899,6 +3909,13 @@ header[id] {
   }
 }
 @media screen and (max-width: 575px) {
+  .tc-project-detail .project-hero {
+    padding-top: 130px;
+    padding-bottom: 50px;
+  }
+  .tc-project-detail .project-hero h1 {
+    font-size: 42px !important;
+  }
   .tc-project-detail .main-img {
     height: 340px;
   }
