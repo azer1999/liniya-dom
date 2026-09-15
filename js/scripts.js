@@ -481,6 +481,12 @@
     // ------------ Preloader -----------
     $( function() {
         const svg = document.getElementById("svg");
+        const hideLoaderFallback = window.setTimeout(() => {
+            $(".loader-wrap").css({
+                display: "none",
+                zIndex: -1,
+            });
+        }, 5000);
         const tl = gsap.timeline();
         const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
         const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
@@ -505,6 +511,7 @@
         tl.to(".loader-wrap", {
             zIndex: -1,
             display: "none",
+            onComplete: () => window.clearTimeout(hideLoaderFallback),
         });
         tl.from(
             "header",
